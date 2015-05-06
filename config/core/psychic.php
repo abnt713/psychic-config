@@ -1,6 +1,8 @@
 <?php
 
-final class PsychicConfig{
+namespace Psychic;
+
+final class Config{
 
     private static $config_dir;
     private static $configs;
@@ -29,7 +31,7 @@ final class PsychicConfig{
         }
     }
 
-    public static function value($configuration_type, $value){
+    public static function get($configuration_type, $value){
         $config = self::load($configuration_type);
         if(isset($config[$value])){
             return $config[$value];
@@ -52,7 +54,7 @@ final class PsychicConfig{
     private static function get_config_object($configuration_type){
         $class_name = ucfirst($configuration_type) . 'Config';
         $config_obj = new $class_name();
-        if($config_obj instanceof PsychicConfiguration){
+        if($config_obj instanceof Configuration){
             return $config_obj;
         }else{
             trigger_error('Configuration for ' . $configuration_type);

@@ -1,6 +1,8 @@
 <?php
 
-interface PsychicConfiguration{
+namespace Psychic;
+
+interface Configuration{
 
     public function config();
 
